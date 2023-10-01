@@ -16,12 +16,93 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class myHomePage extends StatelessWidget {
+class myHomePage extends StatefulWidget {
+  const myHomePage({super.key});
+
+  @override
+  State<myHomePage> createState() => _myHomePageState();
+}
+
+class _myHomePageState extends State<myHomePage> {
+  int currentIndexSelected = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.reorder),
+        title: Text("BDF"),
+        backgroundColor: Color(0XFF0B4884),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.shifting,
+        currentIndex: currentIndexSelected,
+        selectedItemColor: Colors.amber,
+        onTap: (value) {
+          setState(() {
+            currentIndexSelected = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+              backgroundColor: Color(0XFF0B4884),
+              icon: Icon(Icons.home),
+              label: "Inicio"
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Color(0XFF0B4884),
+              icon: Icon(Icons.work),
+              label: "Beneficios"
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Color(0XFF0B4884),
+              icon: Icon(Icons.location_on),
+              label: "Ubicaciones"
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+/*class myHomePage extends StatelessWidget {
   const myHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Text("Hola");
+    return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.reorder),
+        title: Text("BDF"),
+        backgroundColor: Color(0XFF0B4884),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.shifting,
+        currentIndex: 0,
+        selectedItemColor: Colors.amber,
+        onTap: (value) {
+
+        },
+        items: const [
+          BottomNavigationBarItem(
+              backgroundColor: Color(0XFF0B4884),
+            icon: Icon(Icons.home),
+            label: "Inicio"
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Color(0XFF0B4884),
+              icon: Icon(Icons.work),
+              label: "Beneficios"
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Color(0XFF0B4884),
+              icon: Icon(Icons.location_on),
+              label: "Ubicaciones"
+          )
+        ],
+      ),
+    );
   }
 }
 
+*/
